@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget
     return new MaterialApp
     (
       title: 'Plantly',
-      theme: new ThemeData(primarySwatch: Colors.blue),
+      theme: new ThemeData(primarySwatch: Colors.green),
       home: new PlantsListPage(),
     );
   }

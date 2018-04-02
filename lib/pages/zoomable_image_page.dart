@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zoomable_image/zoomable_image.dart';
 
-class ImageZoomable extends StatelessWidget
+class ZoomableImagePage extends StatelessWidget
 {
   final String imgPath;
-  ImageZoomable(this.imgPath);
+  ZoomableImagePage(this.imgPath);
 
   @override
   Widget build(BuildContext context)
@@ -24,7 +24,7 @@ class ImageZoomable extends StatelessWidget
               child: new Hero
               (
                 tag: imgPath,
-                child: new ZoomableImage(new AssetImage(imgPath), scale: 5.0),
+                child: new ZoomableImage(new AssetImage(imgPath), scale: 1.5),
               ),
             ),
             new Align
@@ -42,6 +42,7 @@ class ImageZoomable extends StatelessWidget
                   (
                     elevation: 0.0,
                     backgroundColor: Colors.transparent,
+                    leading: new Container(), // Overrides the go back arrow icon button
                     actions: <Widget>
                     [
                       new IconButton

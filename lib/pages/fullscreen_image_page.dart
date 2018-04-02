@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'image_zoomable.dart';
+import 'zoomable_image_page.dart';
 
 class FullscreenImagePage extends StatelessWidget
 {
@@ -49,7 +49,7 @@ class FullscreenImagePage extends StatelessWidget
                 child: new Column
                 (
                   // I need to add a column to set the MainAxisSize to min,
-                  // otherwise the appbar takes all the screen and the image is no more clickable
+                  // otherwise the appbar takes all the screen height and the image is no more clickable
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>
@@ -67,7 +67,7 @@ class FullscreenImagePage extends StatelessWidget
                       [
                         new IconButton
                         (
-                          onPressed: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ImageZoomable(imgPath))),
+                          onPressed: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ZoomableImagePage(imgPath))),
                           icon: new Icon(Icons.zoom_in, color: Colors.black),
                         ),
                       ],

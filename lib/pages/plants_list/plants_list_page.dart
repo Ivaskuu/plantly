@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'plant_preview.dart';
-import '../../classes/plant.dart';
+import 'dart:async';
 
-final List<Plant> plantsList =
-[
-  new Plant('Morning Glory', 45.0, 'plant1.png'),
-  new Plant('Sunshine Glory', 15.0, 'plant2.png'),
-  new Plant('New Day Hope', 29.99, 'plant3.png'),
-];
+import 'plant_preview.dart';
+import '../cart_page/cart_page.dart';
+import '../../classes/plants_list.dart';
+import '../../classes/cart.dart';
 
 class PlantsListPage extends StatefulWidget
 {
@@ -17,6 +14,9 @@ class PlantsListPage extends StatefulWidget
 
 class _PlantsListPageState extends State<PlantsListPage>
 {
+  bool showBoughtOverlay = false;
+  int actualPlant = 0;
+  
   @override
   Widget build(BuildContext context)
   {
@@ -46,95 +46,160 @@ class _PlantsListPageState extends State<PlantsListPage>
           ),
           actions: <Widget>
           [
-            new IconButton
+            new Center
             (
-              onPressed: () {},
-              icon: new Icon(Icons.shopping_basket, color: Colors.black),
+              child: new IconButton
+              (
+                onPressed: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new CartPage())),
+                icon: new Stack
+                (
+                  children: <Widget>
+                  [
+                    new Align
+                    (
+                      alignment: Alignment.center,
+                      child: new Icon(Icons.shopping_basket, color: Colors.black),
+                    ),
+                    new Align
+                    (
+                      alignment: Alignment.bottomRight,
+                      child: new CircleAvatar
+                      (
+                        radius: 6.0,
+                        backgroundColor: Colors.green,
+                        child: new Text(Cart.cartItems.length.toString(), style: new TextStyle(color: Colors.white, fontSize: 8.0)),
+                      ),
+                    ),
+                  ],
+                )
+              ),
             ),
           ],
         ),
         backgroundColor: Colors.white,
-        body: new Column
+        body: new Stack
         (
+          alignment: Alignment.center,
           children: <Widget>
           [
-            new Expanded
+            /// Plants list, buttons and buy button
+            new Column
             (
-              child: new PageView.builder
-              (
-                scrollDirection: Axis.horizontal,
-                itemCount: plantsList.length,
-                itemBuilder: (_, int pos) => new PlantPreview(plantsList[pos]),
-              ),
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>
+              [
+                /// Plants PageView
+                new Expanded
+                (
+                  child: new PageView.builder
+                  (
+                    scrollDirection: Axis.horizontal,
+                    itemCount: plantsList.length,
+                    itemBuilder: (_, int pos) => new PlantPreview(plantsList[pos]),
+                    onPageChanged: (int newPlantPos) => actualPlant = newPlantPos,
+                  ),
+                ),
+                /// Like and share buttons
+                new Container
+                (
+                  margin: new EdgeInsets.only(top: 4.0, bottom: 4.0),
+                  child: new Row
+                  (
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>
+                    [
+                      new Flexible
+                      (
+                        flex: 1,
+                        child: new GestureDetector
+                        (
+                          onTap: () {},
+                          child: new Padding
+                          (
+                            padding: new EdgeInsets.symmetric(vertical: 16.0),
+                            child: new Row
+                            (
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>
+                              [
+                                new Icon(Icons.favorite_border, color: Colors.green),
+                                new Padding(padding: new EdgeInsets.only(right: 8.0)),
+                                new Text('426', style: new TextStyle(color: Colors.black, fontSize: 22.0, fontWeight: FontWeight.w700)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      new Flexible
+                      (
+                        flex: 1,
+                        child: new GestureDetector
+                        (
+                          onTap: () {},
+                          child: new Padding
+                          (
+                            padding: new EdgeInsets.symmetric(vertical: 16.0),
+                            child: new Row
+                            (
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>
+                              [
+                                new Text('Share', style: new TextStyle(color: Colors.black, fontSize: 22.0, fontWeight: FontWeight.w700)),
+                                new Padding(padding: new EdgeInsets.only(right: 8.0)),
+                                new Icon(Icons.share, color: Colors.green),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                /// Buy button
+                new Hero
+                (
+                  tag: 'Buy button',
+                  child: new MaterialButton
+                  (
+                    onPressed: () => buyPlant(),
+                    color: Colors.green,
+                    child: new Padding
+                    (
+                      padding: const EdgeInsets.all(24.0),
+                      child: new Text('Add to cart', style: new TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            new Container
-            (
-              margin: new EdgeInsets.only(top: 4.0, bottom: 4.0),
-              child: new Row
+            /// When a plant is bought
+            showBoughtOverlay
+            ? new SizedBox.expand
               (
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>
-                [
-                  new Flexible
+                child: new Container
+                (
+                  color: new Color(0xF04CAF50),
+                  child: new Center
                   (
-                    flex: 1,
-                    child: new GestureDetector
-                    (
-                      onTap: () {},
-                      child: new Padding
-                      (
-                        padding: new EdgeInsets.symmetric(vertical: 16.0),
-                        child: new Row
-                        (
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>
-                          [
-                            new Icon(Icons.favorite_border, color: Colors.green),
-                            new Padding(padding: new EdgeInsets.only(right: 8.0)),
-                            new Text('426', style: new TextStyle(color: Colors.black, fontSize: 22.0, fontWeight: FontWeight.w700)),
-                          ],
-                        ),
-                      ),
-                    ),
+                    child: new Icon(Icons.done, size: 128.0, color: Colors.white)
                   ),
-                  new Flexible
-                  (
-                    flex: 1,
-                    child: new GestureDetector
-                    (
-                      onTap: () {},
-                      child: new Padding
-                      (
-                        padding: new EdgeInsets.symmetric(vertical: 16.0),
-                        child: new Row
-                        (
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>
-                          [
-                            new Text('Share', style: new TextStyle(color: Colors.black, fontSize: 22.0, fontWeight: FontWeight.w700)),
-                            new Padding(padding: new EdgeInsets.only(right: 8.0)),
-                            new Icon(Icons.share, color: Colors.green),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
+                ),
+              )
+            : new Container()
           ],
-        ),
-        bottomNavigationBar: new MaterialButton
-        (
-          onPressed: () {},
-          color: Colors.green,
-          child: new Padding
-          (
-            padding: const EdgeInsets.all(24.0),
-            child: new Text('Buy Now', style: new TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600)),
-          ),
         ),
       ),
     );
+  }
+
+  void buyPlant()
+  {
+    setState(()
+    {
+      showBoughtOverlay = true;
+      Cart.cartItems.add(actualPlant);
+    });
+
+    new Timer(new Duration(seconds: 1), () => setState(() => showBoughtOverlay = false));
   }
 }

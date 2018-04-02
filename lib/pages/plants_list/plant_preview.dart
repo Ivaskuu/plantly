@@ -63,7 +63,7 @@ class PlantPreview extends StatelessWidget
                   color: Colors.black,
                   child: new Container
                   (
-                    margin: new EdgeInsets.all(12.0),
+                    margin: new EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
                     child: new Text(plant.plantName, style: new TextStyle(color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.w700)),
                   ),
                 )

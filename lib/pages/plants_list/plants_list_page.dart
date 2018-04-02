@@ -75,7 +75,7 @@ class _PlantsListPageState extends State<PlantsListPage> with SingleTickerProvid
           elevation: 1.0,
           leading: new IconButton
           (
-            onPressed: () {},
+            onPressed: () => showAboutDialog(context: context, applicationIcon: new Container(width: 60.0, child: new Image.asset('res/app_icon.png')), applicationLegalese: 'A plant shop e-commerce app concept.\n\nMade by Ivascu Adrian (Skuu labs).'),
             icon: new Icon(Icons.menu, color: Colors.black),
           ),
           title: new Row

@@ -31,6 +31,7 @@ flutter:
    - res/plant1.png
    - res/plant2.png
    - res/plant3.png
+   - res/app_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

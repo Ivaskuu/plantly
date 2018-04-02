@@ -26,7 +26,7 @@ class _CartPageState extends State<CartPage>
             backgroundColor: Colors.white,
             elevation: 0.0,
             automaticallyImplyLeading: false,
-            title: new Text('Shopping cart', style: new TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 28.0)),
+            title: new Text('Shopping cart', style: new TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 26.0)),
             actions: <Widget>
             [
               new Center
@@ -74,7 +74,7 @@ class _CartPageState extends State<CartPage>
             backgroundColor: Colors.white,
             elevation: 0.0,
             automaticallyImplyLeading: false,
-            title: new Text('Shopping cart', style: new TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 28.0)),
+            title: new Text('Shopping cart', style: new TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 26.0)),
             actions: <Widget>
             [
               new Center

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/plants_list/plants_list.dart';
+import 'pages/plants_list/plants_list_page.dart';
 import 'package:flutter/services.dart';
 
 void main() => runApp(new MyApp());

@@ -394,5 +394,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.13"
+  zoomable_image:
+    dependency: "direct main"
+    description:
+      name: zoomable_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.2"
 sdks:
   dart: ">=2.0.0-dev.23.0 <=2.0.0-edge.3c4dccbd46f152be9e1b6ca95c57357e8e48057c"

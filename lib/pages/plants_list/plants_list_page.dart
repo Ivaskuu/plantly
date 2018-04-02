@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 import 'plant_preview.dart';
 import '../cart_page/cart_page.dart';
@@ -12,11 +11,56 @@ class PlantsListPage extends StatefulWidget
   _PlantsListPageState createState() => new _PlantsListPageState();
 }
 
-class _PlantsListPageState extends State<PlantsListPage>
+class _PlantsListPageState extends State<PlantsListPage> with SingleTickerProviderStateMixin
 {
+  AnimationController animationController;
+  Animation<Color> boughtBgColorAnimation;
+  Animation<Color> boughtIconColorAnimation;
+
   bool showBoughtOverlay = false;
   int actualPlant = 0;
   
+  @override
+  void initState()
+  {
+    super.initState();
+    animationController = new AnimationController(duration: new Duration(milliseconds: 500), vsync: this);
+    animationController.addListener(() => setState(() {}));
+
+    boughtBgColorAnimation = new ColorTween
+    (
+      begin: Colors.transparent,
+      end: new Color(0xF04CAF50)
+    ).animate
+    (
+      new CurvedAnimation
+      (
+        parent: animationController,
+        curve: Curves.decelerate
+      )
+    );
+
+    boughtIconColorAnimation = new ColorTween
+    (
+      begin: Colors.transparent,
+      end: Colors.white
+    ).animate
+    (
+      new CurvedAnimation
+      (
+        parent: animationController,
+        curve: Curves.decelerate
+      )
+    );
+  }
+
+  @override
+  void dispose()
+  {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context)
   {
@@ -178,10 +222,10 @@ class _PlantsListPageState extends State<PlantsListPage>
               (
                 child: new Container
                 (
-                  color: new Color(0xF04CAF50),
+                  color: boughtBgColorAnimation.value,
                   child: new Center
                   (
-                    child: new Icon(Icons.done, size: 128.0, color: Colors.white)
+                    child: new Icon(Icons.done, size: 128.0, color: boughtIconColorAnimation.value)
                   ),
                 ),
               )
@@ -198,8 +242,10 @@ class _PlantsListPageState extends State<PlantsListPage>
     {
       showBoughtOverlay = true;
       Cart.cartItems.add(actualPlant);
-    });
 
-    new Timer(new Duration(seconds: 1), () => setState(() => showBoughtOverlay = false));
+      animationController.forward()
+        .then((_) => animationController.reverse()
+          .then((_) => setState(() => showBoughtOverlay = false)));
+    });
   }
 }

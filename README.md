@@ -1,8 +1,4 @@
-# plantly
+# Plantly
+A concept app that I made with Flutter, [inspired by this](https://www.uplabs.com/posts/planlty-browse-buy-plants).
 
-A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+![App ui](media/plantly_app_concept.gif)

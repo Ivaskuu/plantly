@@ -24,7 +24,7 @@ class ZoomableImagePage extends StatelessWidget
               child: new Hero
               (
                 tag: imgPath,
-                child: new ZoomableImage(new AssetImage(imgPath), scale: 1.5),
+                child: new ZoomableImage(new AssetImage(imgPath), scale: 3.0),
               ),
             ),
             new Align

@@ -1,9 +1,15 @@
-# Plantly
-A concept app that I made with Flutter, [inspired by this](https://www.uplabs.com/posts/planlty-browse-buy-plants).
+# Plantly: buy plants.
+A concept app that I made with Flutter, inspired by this:
 
-![App ui](media/plantly_app_concept.gif) (original concept)
+![App ui](media/plantly_app_concept.gif)
 
-## Screenshots of the app
+Wanna try it? Here's the Play store link: [Plantly](https://play.google.com/store/apps/details?id=com.skuu.plantly).
+
+## Final result
+<img src="media/playstore_screenshot_2_small.png" width="600">
+
+
+## Screenshots
 - Main page (plants list)<br>
 <img src="media/screenshots/flutter_01.png" width="200">
 
@@ -18,3 +24,11 @@ A concept app that I made with Flutter, [inspired by this](https://www.uplabs.co
 
 - Cart page with items<br>
 <img src="media/screenshots/flutter_05.png" width="200">
+
+
+## What I've learned by doing this project
+- Make more beautiful shadows
+- Used the image_zoom package
+- I can round the corners of the whole app (:mindblown:)
+- Make the app fullscreen (hide the notification bar and softkeys)
+- _You should always backup the key file you used to sign the apk if you still want to update it..._

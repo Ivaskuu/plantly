@@ -6,10 +6,10 @@ A concept app that I made with Flutter, inspired by this:
 Wanna try it? Here's the Play store link: [Plantly](https://play.google.com/store/apps/details?id=com.skuu.plantly).
 
 ## Final result
-<img src="media/playstore_screenshot_2_small.png" width="600">
+<img src="media/playstore_screenshot_2_small.png" width="800">
 
 
-## Screenshots
+## Screenshots (click to enlarge)
 - Main page (plants list)<br>
 <img src="media/screenshots/flutter_01.png" width="200">
 

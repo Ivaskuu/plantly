@@ -4,7 +4,8 @@ import '../../classes/plant.dart';
 class CartItem extends StatelessWidget
 {
   final Plant plant;
-  CartItem(this.plant);
+  final VoidCallback onPressed;
+  CartItem(this.plant, this.onPressed);
 
   @override
   Widget build(BuildContext context)
@@ -42,7 +43,7 @@ class CartItem extends StatelessWidget
             ),
             trailing: new IconButton
             (
-              onPressed: () {},
+              onPressed: onPressed,
               icon: new Icon(Icons.delete, color: Colors.black26),
             ),
           ),

@@ -1,196 +1,170 @@
 import 'package:flutter/material.dart';
 
-import 'plant_preview.dart';
-import '../cart_page/cart_page.dart';
-import '../../classes/plants_list.dart';
 import '../../classes/cart.dart';
+import '../../classes/plants_list.dart';
+import '../cart_page/cart_page.dart';
+import 'plant_preview.dart';
 
-class PlantsListPage extends StatefulWidget
-{
+class PlantsListPage extends StatefulWidget {
   @override
-  _PlantsListPageState createState() => new _PlantsListPageState();
+  _PlantsListPageState createState() => _PlantsListPageState();
 }
 
-class _PlantsListPageState extends State<PlantsListPage> with SingleTickerProviderStateMixin
-{
+class _PlantsListPageState extends State<PlantsListPage>
+    with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<Color> boughtBgColorAnimation;
   Animation<Color> boughtIconColorAnimation;
 
   bool showBoughtOverlay = false;
   int actualPlant = 0;
-  
+
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
-    animationController = new AnimationController(duration: new Duration(milliseconds: 500), vsync: this);
+    animationController =
+        AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     animationController.addListener(() => setState(() {}));
 
-    boughtBgColorAnimation = new ColorTween
-    (
-      begin: Colors.transparent,
-      end: new Color(0xF04CAF50)
-    ).animate
-    (
-      new CurvedAnimation
-      (
-        parent: animationController,
-        curve: Curves.decelerate
-      )
-    );
+    boughtBgColorAnimation =
+        ColorTween(begin: Colors.transparent, end: Color(0xF04CAF50)).animate(
+            CurvedAnimation(
+                parent: animationController, curve: Curves.decelerate));
 
-    boughtIconColorAnimation = new ColorTween
-    (
-      begin: Colors.transparent,
-      end: Colors.white
-    ).animate
-    (
-      new CurvedAnimation
-      (
-        parent: animationController,
-        curve: Curves.decelerate
-      )
-    );
+    boughtIconColorAnimation =
+        ColorTween(begin: Colors.transparent, end: Colors.white).animate(
+            CurvedAnimation(
+                parent: animationController, curve: Curves.decelerate));
   }
 
   @override
-  void dispose()
-  {
+  void dispose() {
     animationController.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context)
-  {
-    return new Material
-    (
-      borderRadius: new BorderRadius.circular(8.0),
-      child: new Scaffold
-      (
-        appBar: new AppBar
-        (
+  Widget build(BuildContext context) {
+    return Material(
+      borderRadius: BorderRadius.circular(8.0),
+      child: Scaffold(
+        appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 1.0,
-          leading: new IconButton
-          (
-            onPressed: () => showAboutDialog(context: context, applicationIcon: new Container(width: 60.0, child: new Image.asset('res/app_icon.png')), applicationLegalese: 'A plant shop e-commerce app concept.\n\nMade by Ivascu Adrian (Skuu labs).'),
-            icon: new Icon(Icons.menu, color: Colors.black),
+          leading: IconButton(
+            onPressed: () => showAboutDialog(
+                context: context,
+                applicationIcon: Container(
+                    width: 60.0, child: Image.asset('res/app_icon.png')),
+                applicationLegalese:
+                    'A plant shop e-commerce app concept.\n\nMade by Ivascu Adrian (Skuu labs).'),
+            icon: Icon(Icons.menu, color: Colors.black),
           ),
-          title: new Row
-          (
+          title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>
-            [
-              new Text('Plantly', style: new TextStyle(color: Colors.black, fontSize: 26.0, fontWeight: FontWeight.w700)),
-              new Text('.', style: new TextStyle(color: Colors.green, fontSize: 36.0, fontWeight: FontWeight.w700))
+            children: <Widget>[
+              Text('Plantly',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 26.0,
+                      fontWeight: FontWeight.w700)),
+              Text('.',
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 36.0,
+                      fontWeight: FontWeight.w700))
             ],
           ),
-          actions: <Widget>
-          [
-            new Center
-            (
-              child: new IconButton
-              (
-                onPressed: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new CartPage())),
-                icon: new Stack
-                (
-                  children: <Widget>
-                  [
-                    new Align
-                    (
-                      alignment: Alignment.center,
-                      child: new Icon(Icons.shopping_basket, color: Colors.black),
-                    ),
-                    new Align
-                    (
-                      alignment: Alignment.bottomRight,
-                      child: new CircleAvatar
-                      (
-                        radius: 6.0,
-                        backgroundColor: Colors.green,
-                        child: new Text(Cart.cartItems.length.toString(), style: new TextStyle(color: Colors.white, fontSize: 8.0)),
+          actions: <Widget>[
+            Center(
+              child: IconButton(
+                  onPressed: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => CartPage())),
+                  icon: Stack(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.center,
+                        child: Icon(Icons.shopping_basket, color: Colors.black),
                       ),
-                    ),
-                  ],
-                )
-              ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: CircleAvatar(
+                          radius: 6.0,
+                          backgroundColor: Colors.green,
+                          child: Text(Cart.cartItems.length.toString(),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 8.0)),
+                        ),
+                      ),
+                    ],
+                  )),
             ),
           ],
         ),
         backgroundColor: Colors.white,
-        body: new Stack
-        (
+        body: Stack(
           alignment: Alignment.center,
-          children: <Widget>
-          [
+          children: <Widget>[
             /// Plants list, buttons and buy button
-            new Column
-            (
+            Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>
-              [
+              children: <Widget>[
                 /// Plants PageView
-                new Expanded
-                (
-                  child: new PageView.builder
-                  (
+                Expanded(
+                  child: PageView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: plantsList.length,
-                    itemBuilder: (_, int pos) => new PlantPreview(plantsList[pos]),
-                    onPageChanged: (int newPlantPos) => actualPlant = newPlantPos,
+                    itemBuilder: (_, int pos) => PlantPreview(plantsList[pos]),
+                    onPageChanged: (int newPlantPos) =>
+                        actualPlant = newPlantPos,
                   ),
                 ),
+
                 /// Like and share buttons
-                new Container
-                (
-                  margin: new EdgeInsets.only(top: 4.0, bottom: 4.0),
-                  child: new Row
-                  (
+                Container(
+                  margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>
-                    [
-                      new Flexible
-                      (
+                    children: <Widget>[
+                      Flexible(
                         flex: 1,
-                        child: new GestureDetector
-                        (
+                        child: GestureDetector(
                           onTap: () {},
-                          child: new Padding
-                          (
-                            padding: new EdgeInsets.symmetric(vertical: 16.0),
-                            child: new Row
-                            (
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>
-                              [
-                                new Icon(Icons.favorite_border, color: Colors.green),
-                                new Padding(padding: new EdgeInsets.only(right: 8.0)),
-                                new Text('426', style: new TextStyle(color: Colors.black, fontSize: 22.0, fontWeight: FontWeight.w700)),
+                              children: <Widget>[
+                                Icon(Icons.favorite_border,
+                                    color: Colors.green),
+                                Padding(padding: EdgeInsets.only(right: 8.0)),
+                                Text('426',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 22.0,
+                                        fontWeight: FontWeight.w700)),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      new Flexible
-                      (
+                      Flexible(
                         flex: 1,
-                        child: new GestureDetector
-                        (
+                        child: GestureDetector(
                           onTap: () {},
-                          child: new Padding
-                          (
-                            padding: new EdgeInsets.symmetric(vertical: 16.0),
-                            child: new Row
-                            (
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>
-                              [
-                                new Text('Share', style: new TextStyle(color: Colors.black, fontSize: 22.0, fontWeight: FontWeight.w700)),
-                                new Padding(padding: new EdgeInsets.only(right: 8.0)),
-                                new Icon(Icons.share, color: Colors.green),
+                              children: <Widget>[
+                                Text('Share',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 22.0,
+                                        fontWeight: FontWeight.w700)),
+                                Padding(padding: EdgeInsets.only(right: 8.0)),
+                                Icon(Icons.share, color: Colors.green),
                               ],
                             ),
                           ),
@@ -199,52 +173,51 @@ class _PlantsListPageState extends State<PlantsListPage> with SingleTickerProvid
                     ],
                   ),
                 ),
+
                 /// Buy button
-                new Hero
-                (
+                Hero(
                   tag: 'Buy button',
-                  child: new MaterialButton
-                  (
+                  child: MaterialButton(
                     onPressed: () => buyPlant(),
                     color: Colors.green,
-                    child: new Padding
-                    (
+                    child: Padding(
                       padding: const EdgeInsets.all(24.0),
-                      child: new Text('Add to cart', style: new TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600)),
+                      child: Text('Add to cart',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ),
               ],
             ),
+
             /// When a plant is bought
             showBoughtOverlay
-            ? new SizedBox.expand
-              (
-                child: new Container
-                (
-                  color: boughtBgColorAnimation.value,
-                  child: new Center
-                  (
-                    child: new Icon(Icons.done, size: 128.0, color: boughtIconColorAnimation.value)
-                  ),
-                ),
-              )
-            : new Container()
+                ? SizedBox.expand(
+                    child: Container(
+                      color: boughtBgColorAnimation.value,
+                      child: Center(
+                          child: Icon(Icons.done,
+                              size: 128.0,
+                              color: boughtIconColorAnimation.value)),
+                    ),
+                  )
+                : Container()
           ],
         ),
       ),
     );
   }
 
-  void buyPlant()
-  {
-    setState(()
-    {
+  void buyPlant() {
+    setState(() {
       showBoughtOverlay = true;
       Cart.cartItems.add(actualPlant);
 
-      animationController.forward()
-        .then((_) => animationController.reverse()
+      animationController.forward().then((_) => animationController
+          .reverse()
           .then((_) => setState(() => showBoughtOverlay = false)));
     });
   }

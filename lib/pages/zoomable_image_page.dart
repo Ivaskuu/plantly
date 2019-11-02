@@ -7,14 +7,14 @@ class ZoomableImagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Colors.transparent,
-      body: new SizedBox.expand(
-        child: new Stack(
+      body: SizedBox.expand(
+        child: Stack(
           children: <Widget>[
-            new Align(
+            Align(
               alignment: Alignment.center,
-              child: new Hero(
+              child: Hero(
                 tag: imgPath,
                 child: ZoomableWidget(
                   panLimit: 1.0,
@@ -30,23 +30,23 @@ class ZoomableImagePage extends StatelessWidget {
                 ),
               ),
             ),
-            new Align(
+            Align(
               alignment: Alignment.topCenter,
-              child: new Column(
+              child: Column(
                 // I need to add a column to set the MainAxisSize to min,
                 // otherwise the appbar takes all the screen and the image is no more clickable
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  new AppBar(
+                  AppBar(
                     elevation: 0.0,
                     backgroundColor: Colors.transparent,
                     leading:
-                        new Container(), // Overrides the go back arrow icon button
+                        Container(), // Overrides the go back arrow icon button
                     actions: <Widget>[
-                      new IconButton(
+                      IconButton(
                         onPressed: () => Navigator.of(context).pop(),
-                        icon: new Icon(Icons.close, color: Colors.white),
+                        icon: Icon(Icons.close, color: Colors.white),
                       ),
                     ],
                   ),

@@ -25,17 +25,23 @@ class CartItem extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
                     fontSize: 20)),
-            subtitle: Material(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(8),
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                child: Text(
-                    plant.price - plant.price.truncate() > 0
-                        ? '\$${plant.price.toStringAsFixed(2)}'
-                        : '\$${plant.price.truncate()}',
-                    style: TextStyle(color: Colors.white)),
-              ),
+            subtitle: Row(
+              children: <Widget>[
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: Text(
+                        plant.price - plant.price.truncate() > 0
+                            ? '\$${plant.price.toStringAsFixed(2)}'
+                            : '\$${plant.price.truncate()}',
+                        style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ],
             ),
             trailing: IconButton(
               onPressed: onPressed,

@@ -15,6 +15,7 @@ class _CartPageState extends State<CartPage> {
     if (Cart.cartItems.length > 0) {
       return Material(
         borderRadius: BorderRadius.circular(8.0),
+        clipBehavior: Clip.hardEdge,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
@@ -66,6 +67,7 @@ class _CartPageState extends State<CartPage> {
     {
       return Material(
         borderRadius: BorderRadius.circular(8.0),
+        clipBehavior: Clip.hardEdge,
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,

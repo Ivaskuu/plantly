@@ -1,5 +1,4 @@
-class Plant
-{
+class Plant {
   String plantName;
   String plantImg;
   double price;

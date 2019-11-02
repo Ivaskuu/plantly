@@ -47,6 +47,7 @@ class _PlantsListPageState extends State<PlantsListPage>
   Widget build(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(8.0),
+      clipBehavior: Clip.hardEdge,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,

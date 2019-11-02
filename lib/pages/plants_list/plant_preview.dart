@@ -22,6 +22,7 @@ class PlantPreview extends StatelessWidget {
             builder: (_) => FullscreenImagePage('res/' + plant.plantImg))),
         child: Material(
           borderRadius: BorderRadius.circular(14.0),
+          clipBehavior: Clip.hardEdge,
           color: Colors.transparent,
           child: Stack(
             children: <Widget>[
@@ -40,6 +41,7 @@ class PlantPreview extends StatelessWidget {
                   child: Material(
                     borderRadius:
                         BorderRadius.only(topRight: Radius.circular(14.0)),
+                    clipBehavior: Clip.hardEdge,
                     color: Colors.black,
                     child: Container(
                       margin: EdgeInsets.symmetric(
@@ -56,6 +58,7 @@ class PlantPreview extends StatelessWidget {
                   child: Material(
                     borderRadius:
                         BorderRadius.only(bottomLeft: Radius.circular(14.0)),
+                    clipBehavior: Clip.hardEdge,
                     color: Colors.green,
                     child: Container(
                       margin: EdgeInsets.all(12.0),

@@ -14,18 +14,18 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     if (Cart.cartItems.length > 0) {
       return Material(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8),
         clipBehavior: Clip.hardEdge,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            elevation: 0.0,
+            elevation: 0,
             automaticallyImplyLeading: false,
             title: Text('Shopping cart',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
-                    fontSize: 26.0)),
+                    fontSize: 26)),
             actions: <Widget>[
               Center(
                 child: IconButton(
@@ -51,12 +51,12 @@ class _CartPageState extends State<CartPage> {
               onPressed: () {},
               color: Colors.green,
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(24),
                 child: Text(
                     'Buy Now (\$${calculateFinalPrice().toStringAsFixed(2)})',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.0,
+                        fontSize: 20,
                         fontWeight: FontWeight.w600)),
               ),
             ),
@@ -66,18 +66,18 @@ class _CartPageState extends State<CartPage> {
     } else // Show an empty state
     {
       return Material(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8),
         clipBehavior: Clip.hardEdge,
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              elevation: 0.0,
+              elevation: 0,
               automaticallyImplyLeading: false,
               title: Text('Shopping cart',
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w700,
-                      fontSize: 26.0)),
+                      fontSize: 26)),
               actions: <Widget>[
                 Center(
                   child: IconButton(
@@ -94,32 +94,32 @@ class _CartPageState extends State<CartPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.remove_shopping_cart,
-                      color: Colors.black26, size: 96.0),
-                  Padding(padding: EdgeInsets.only(bottom: 48.0)),
+                      color: Colors.black26, size: 96),
+                  Padding(padding: EdgeInsets.only(bottom: 48)),
                   Text('Your cart is empty!',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
-                          fontSize: 28.0)),
-                  Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                          fontSize: 28)),
+                  Padding(padding: EdgeInsets.only(bottom: 8)),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 64.0),
+                    margin: EdgeInsets.symmetric(horizontal: 64),
                     child: Text(
                         'Looks like you haven\'t added any plants to your cart yet.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20.0)),
+                        style: TextStyle(fontSize: 20)),
                   ),
-                  Padding(padding: EdgeInsets.only(bottom: 96.0)),
+                  Padding(padding: EdgeInsets.only(bottom: 96)),
                   Container(
                     child: Material(
-                      elevation: 16.0,
+                      elevation: 16,
                       shadowColor: Color(0x7000E676),
                       color: Colors.white,
                       child: InkWell(
                         onTap: () => Navigator.of(context).pop(),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 64.0, vertical: 16.0),
+                              horizontal: 64, vertical: 16),
                           child: Text('Go back',
                               style: TextStyle(
                                   color: Colors.green,
@@ -136,7 +136,7 @@ class _CartPageState extends State<CartPage> {
   }
 
   double calculateFinalPrice() {
-    double cost = 0.0;
+    double cost = 0;
     for (int plantPos in Cart.cartItems) {
       cost += plantsList[plantPos].price;
     }

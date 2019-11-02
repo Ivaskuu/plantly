@@ -15,13 +15,12 @@ class PlantPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-          top: 24.0, left: 24.0, right: 24.0, bottom: 0.0),
+      padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 0),
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (_) => FullscreenImagePage('res/' + plant.plantImg))),
         child: Material(
-          borderRadius: BorderRadius.circular(14.0),
+          borderRadius: BorderRadius.circular(14),
           clipBehavior: Clip.hardEdge,
           color: Colors.transparent,
           child: Stack(
@@ -40,16 +39,16 @@ class PlantPreview extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: Material(
                     borderRadius:
-                        BorderRadius.only(topRight: Radius.circular(14.0)),
+                        BorderRadius.only(topRight: Radius.circular(14)),
                     clipBehavior: Clip.hardEdge,
                     color: Colors.black,
                     child: Container(
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 12.0),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       child: Text(plant.plantName,
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 24.0,
+                              fontSize: 24,
                               fontWeight: FontWeight.w700)),
                     ),
                   )),
@@ -57,18 +56,18 @@ class PlantPreview extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: Material(
                     borderRadius:
-                        BorderRadius.only(bottomLeft: Radius.circular(14.0)),
+                        BorderRadius.only(bottomLeft: Radius.circular(14)),
                     clipBehavior: Clip.hardEdge,
                     color: Colors.green,
                     child: Container(
-                      margin: EdgeInsets.all(12.0),
+                      margin: EdgeInsets.all(12),
                       child: Text(
                           plant.price - plant.price.truncate() > 0
                               ? '\$${plant.price.toStringAsFixed(2)}'
                               : '\$${plant.price.truncate()}',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22.0,
+                              fontSize: 22,
                               fontWeight: FontWeight.w500)),
                     ),
                   )),

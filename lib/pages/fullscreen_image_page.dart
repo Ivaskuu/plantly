@@ -35,7 +35,7 @@ class FullscreenImagePage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       AppBar(
-                        elevation: 0.0,
+                        elevation: 0,
                         backgroundColor: Colors.transparent,
                         leading: IconButton(
                           onPressed: () => Navigator.of(context).pop(),

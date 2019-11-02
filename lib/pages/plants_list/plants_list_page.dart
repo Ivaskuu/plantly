@@ -46,17 +46,17 @@ class _PlantsListPageState extends State<PlantsListPage>
   @override
   Widget build(BuildContext context) {
     return Material(
-      borderRadius: BorderRadius.circular(8.0),
+      borderRadius: BorderRadius.circular(8),
       clipBehavior: Clip.hardEdge,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          elevation: 1.0,
+          elevation: 1,
           leading: IconButton(
             onPressed: () => showAboutDialog(
                 context: context,
                 applicationIcon: Container(
-                    width: 60.0, child: Image.asset('res/app_icon.png')),
+                    width: 60, child: Image.asset('res/app_icon.png')),
                 applicationLegalese:
                     'A plant shop e-commerce app concept.\n\nMade by Ivascu Adrian (Skuu labs).'),
             icon: Icon(Icons.menu, color: Colors.black),
@@ -68,12 +68,12 @@ class _PlantsListPageState extends State<PlantsListPage>
               Text('Plantly',
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 26.0,
+                      fontSize: 26,
                       fontWeight: FontWeight.w700)),
               Text('.',
                   style: TextStyle(
                       color: Colors.green,
-                      fontSize: 36.0,
+                      fontSize: 36,
                       fontWeight: FontWeight.w700))
             ],
           ),
@@ -91,11 +91,11 @@ class _PlantsListPageState extends State<PlantsListPage>
                       Align(
                         alignment: Alignment.bottomRight,
                         child: CircleAvatar(
-                          radius: 6.0,
+                          radius: 6,
                           backgroundColor: Colors.green,
                           child: Text(Cart.cartItems.length.toString(),
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 8.0)),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 8)),
                         ),
                       ),
                     ],
@@ -124,7 +124,7 @@ class _PlantsListPageState extends State<PlantsListPage>
 
                 /// Like and share buttons
                 Container(
-                  margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
+                  margin: EdgeInsets.only(top: 4, bottom: 4),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -133,17 +133,17 @@ class _PlantsListPageState extends State<PlantsListPage>
                         child: GestureDetector(
                           onTap: () {},
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                            padding: EdgeInsets.symmetric(vertical: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Icon(Icons.favorite_border,
                                     color: Colors.green),
-                                Padding(padding: EdgeInsets.only(right: 8.0)),
+                                Padding(padding: EdgeInsets.only(right: 8)),
                                 Text('426',
                                     style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 22.0,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.w700)),
                               ],
                             ),
@@ -155,16 +155,16 @@ class _PlantsListPageState extends State<PlantsListPage>
                         child: GestureDetector(
                           onTap: () {},
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                            padding: EdgeInsets.symmetric(vertical: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text('Share',
                                     style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 22.0,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.w700)),
-                                Padding(padding: EdgeInsets.only(right: 8.0)),
+                                Padding(padding: EdgeInsets.only(right: 8)),
                                 Icon(Icons.share, color: Colors.green),
                               ],
                             ),
@@ -182,11 +182,11 @@ class _PlantsListPageState extends State<PlantsListPage>
                     onPressed: () => buyPlant(),
                     color: Colors.green,
                     child: Padding(
-                      padding: const EdgeInsets.all(24.0),
+                      padding: const EdgeInsets.all(24),
                       child: Text('Add to cart',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20.0,
+                              fontSize: 20,
                               fontWeight: FontWeight.w600)),
                     ),
                   ),
@@ -201,7 +201,7 @@ class _PlantsListPageState extends State<PlantsListPage>
                       color: boughtBgColorAnimation.value,
                       child: Center(
                           child: Icon(Icons.done,
-                              size: 128.0,
+                              size: 128,
                               color: boughtIconColorAnimation.value)),
                     ),
                   )

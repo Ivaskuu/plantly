@@ -17,9 +17,9 @@ class ZoomableImagePage extends StatelessWidget {
               child: Hero(
                 tag: imgPath,
                 child: ZoomableWidget(
-                  panLimit: 1.0,
-                  maxScale: 3.0,
-                  minScale: 1.0,
+                  panLimit: 1,
+                  maxScale: 3,
+                  minScale: 1,
                   singleFingerPan: true,
                   multiFingersPan: false,
                   enableRotate: false,
@@ -39,7 +39,7 @@ class ZoomableImagePage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   AppBar(
-                    elevation: 0.0,
+                    elevation: 0,
                     backgroundColor: Colors.transparent,
                     leading:
                         Container(), // Overrides the go back arrow icon button

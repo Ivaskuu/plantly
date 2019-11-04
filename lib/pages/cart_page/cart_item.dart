@@ -1,49 +1,51 @@
 import 'package:flutter/material.dart';
+
 import '../../classes/plant.dart';
 
-class CartItem extends StatelessWidget
-{
+class CartItem extends StatelessWidget {
   final Plant plant;
-  CartItem(this.plant);
+  final VoidCallback onPressed;
+  CartItem(this.plant, this.onPressed);
 
   @override
-  Widget build(BuildContext context)
-  {
-    return new Container
-    (
-      margin: new EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: new Material
-      (
-        elevation: 30.0,
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Material(
+        elevation: 30,
         shadowColor: Colors.black54,
         color: Colors.white,
-        borderRadius: new BorderRadius.circular(6.0),
-        child: new Padding
-        (
-          padding: new EdgeInsets.symmetric(vertical: 6.0),
-          child: new ListTile
-          (
-            leading: new Image.asset('res/${plant.plantImg}'),
-            title: new Text(plant.plantName, style: new TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20.0)),
-            subtitle: new Material
-            (
-              color: Colors.green,
-              borderRadius: new BorderRadius.circular(8.0),
-              child: new Container
-              (
-                margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-                child: new Text
-                (
-                  plant.price - plant.price.truncate() > 0
-                    ? '\$${plant.price.toStringAsFixed(2)}'
-                    : '\$${plant.price.truncate()}',
-                  style: new TextStyle(color: Colors.white)),
-              ),
+        borderRadius: BorderRadius.circular(6),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          child: ListTile(
+            leading: Image.asset('res/${plant.plantImg}'),
+            title: Text(plant.plantName,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20)),
+            subtitle: Row(
+              children: <Widget>[
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    child: Text(
+                        plant.price - plant.price.truncate() > 0
+                            ? '\$${plant.price.toStringAsFixed(2)}'
+                            : '\$${plant.price.truncate()}',
+                        style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ],
             ),
-            trailing: new IconButton
-            (
-              onPressed: () {},
-              icon: new Icon(Icons.delete, color: Colors.black26),
+            trailing: IconButton(
+              onPressed: onPressed,
+              icon: Icon(Icons.delete, color: Colors.black26),
             ),
           ),
         ),

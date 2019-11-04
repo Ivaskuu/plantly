@@ -1,4 +1,3 @@
-class Cart
-{
-  static List<int> cartItems = new List();
+class Cart {
+  static List<int> cartItems = List();
 }

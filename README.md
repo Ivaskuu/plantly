@@ -3,7 +3,7 @@ A concept app that I made with Flutter, inspired by this:
 
 ![App ui](media/plantly_app_concept.gif)
 
-Wanna try it? Here's the Play store link: [Plantly](https://play.google.com/store/apps/details?id=com.skuu.plantly).
+Wanna try it? Fork & Install. :)
 
 ## Final result
 <img src="media/playstore_screenshot_2_small.png" width="800">
